@@ -7,6 +7,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import Dashboard from "@/pages/Dashboard";
 import Reservation from "@/pages/Reservation";
 import Admin from "@/pages/Admin";
+import ReservationReport from "@/pages/ReservationReport";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -14,6 +15,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Dashboard} />
       <Route path="/reserve" component={Reservation} />
+      <Route path="/report" component={ReservationReport} />
       <Route path="/admin" component={Admin} />
       <Route component={NotFound} />
     </Switch>

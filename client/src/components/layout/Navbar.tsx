@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Car, LayoutDashboard, CalendarCheck, Settings, Activity } from "lucide-react";
+import { Car, LayoutDashboard, CalendarCheck, Settings, Activity, FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useIoT } from "@/context/IoTContext";
 
@@ -10,6 +10,7 @@ export function Navbar() {
   const navItems = [
     { href: "/", icon: LayoutDashboard, label: "Dashboard" },
     { href: "/reserve", icon: CalendarCheck, label: "Reserve" },
+    { href: "/report", icon: FileText, label: "Report" },
     { href: "/admin", icon: Settings, label: "Admin" },
   ];
 
