@@ -1,9 +1,10 @@
 import { Link, useLocation } from "wouter";
-import { Car, LayoutDashboard, CalendarCheck, Settings, Activity, FileText } from "lucide-react";
+import { Car, LayoutDashboard, CalendarCheck, Settings, Activity, FileText, LogOut } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useIoT } from "@/context/IoTContext";
+import { Button } from "@/components/ui/button";
 
-export function Navbar() {
+export function Navbar({ user, onLogout }: { user?: any; onLogout?: () => void }) {
   const [location] = useLocation();
   const { simulationActive, toggleSimulation } = useIoT();
 
@@ -48,6 +49,19 @@ export function Navbar() {
              <Activity className={cn("h-3 w-3", simulationActive ? "animate-pulse text-green-500" : "text-red-500")} />
              <span className="font-mono hidden md:inline">{simulationActive ? "SYSTEM ONLINE" : "SIMULATION PAUSED"}</span>
            </button>
+           {user && (
+             <div className="flex items-center gap-3 border-l border-border pl-4">
+               <span className="text-sm text-muted-foreground hidden sm:inline">{user.username}</span>
+               <Button
+                 variant="ghost"
+                 size="sm"
+                 onClick={onLogout}
+                 data-testid="button-logout"
+               >
+                 <LogOut className="h-4 w-4" />
+               </Button>
+             </div>
+           )}
         </div>
       </div>
     </nav>
