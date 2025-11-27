@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertUserSchema } from "@shared/schema";
+import { randomUUID } from "crypto";
 
 export async function registerRoutes(
   httpServer: Server,
@@ -47,6 +48,33 @@ export async function registerRoutes(
       res.json({ id: user.id, username: user.username });
     } catch (error) {
       res.status(500).json({ message: "Login failed" });
+    }
+  });
+
+  // Payment Routes
+  app.post("/api/payments/create", async (req, res) => {
+    try {
+      const { slotId, slotLabel, slotType, hours, amount } = req.body;
+
+      if (!slotId || !slotLabel || !hours || !amount) {
+        return res.status(400).json({ message: "Missing payment details" });
+      }
+
+      // Create a simple receipt
+      const receipt = {
+        id: `RCP-${randomUUID().slice(0, 8).toUpperCase()}`,
+        slotId,
+        slotLabel,
+        slotType,
+        hours,
+        amount,
+        createdAt: new Date().toISOString(),
+        status: "paid",
+      };
+
+      res.json(receipt);
+    } catch (error) {
+      res.status(500).json({ message: "Payment failed" });
     }
   });
 
