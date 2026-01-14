@@ -1,0 +1,2 @@
+The Smart Car Parking System is a web-based application designed to simplify parking management by allowing users to view available parking slots and make reservations online. The system includes an admin interface to manage parking spaces and monitor bookings, helping improve space utilization. Built using a modern React-based frontend, the application provides a responsive and user-friendly experience across devices.
+<img width="2650" height="1608" alt="image" src="https://github.com/user-attachments/assets/3570150b-296a-4677-9a4f-8d39cff1b596" />
